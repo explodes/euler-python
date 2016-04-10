@@ -23,8 +23,9 @@ def divisors(n):
     all_divisors = [1] if n == 1 else [1, n]
     for divisor in lrange(2, int(m.sqrt(n)) + 1):
         if n % divisor == 0:
-            insert_in_order(all_divisors, divisor)
-            insert_in_order(all_divisors, n / divisor)
+            insert_in_order(all_divisors, divisor, unique=False)
+            if divisor * divisor != n:
+                insert_in_order(all_divisors, n / divisor, unique=False)
     return all_divisors
 
 

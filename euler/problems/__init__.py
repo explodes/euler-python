@@ -1,25 +1,12 @@
-from euler1 import *
-from euler2 import *
-from euler3 import *
-from euler4 import *
-from euler5 import *
-from euler6 import *
-from euler7 import *
-from euler8 import *
-from euler9 import *
+import os
+import glob
+import re
 
-from euler10 import *
-from euler11 import *
-from euler12 import *
-from euler13 import *
-from euler14 import *
-from euler15 import *
-from euler16 import *
-from euler17 import *
-from euler18 import *
-from euler19 import *
-
-from euler20 import *
-from euler21 import *
-
-from euler67 import *
+# I tried to make this as ridiculous as possible. I'm sorry but I just couldn't resist.
+# After it was built and working, I thought, I could do this in one line...
+# I know it's bad. But it feels right.
+#
+# Load all problem modules (eulerXX.py) in order so the registry can collect modules.
+[__import__('euler.problems.euler%d' % num) for num in
+ sorted(int(re.search('euler(?P<num>\d+)\.py$', filename).group('num')) for filename in
+        glob.iglob(os.path.join(os.path.dirname(__file__), 'euler*.py')))]

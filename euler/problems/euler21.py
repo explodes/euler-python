@@ -1,19 +1,13 @@
 #!/usr/bin/env python
 # coding=utf-8
-from euler.lib.mem import memoize
 from euler.lib.math import divisors
 from euler.problems.registry import register
 
-VALUE = 100
-
-
-@memoize()
-def mem_divisors(n):
-    return divisors(n)
+LIMIT = 10000
 
 
 def proper_divisors(n):
-    d = mem_divisors(n)
+    d = divisors(n)
     if n in d:
         d.remove(n)
     return d
@@ -21,6 +15,26 @@ def proper_divisors(n):
 
 def sum_proper_divisors(n):
     return sum(proper_divisors(n))
+
+
+def amicable_numbers(below):
+    # map numbers to sums
+    d = {}
+    for i in xrange(1, below):
+        d[i] = sum_proper_divisors(i)
+
+    # when a != b and d[b] = a and d[a] == b, a and b are amicable
+    amicable = set()
+    for number, s in d.iteritems():
+        if not number == s and s in d and d[s] == number:
+            amicable.add(number)
+            amicable.add(s)
+
+    return amicable
+
+
+def sum_amicable_numbers(below):
+    return sum(amicable_numbers(below))
 
 
 @register
@@ -37,19 +51,24 @@ class Euler:
     """
     NUMBER = 21
     NAME = "Amicable numbers"
-    ANSWER = "unknown"
+    ANSWER = 31626
 
     def run(self):
-        pass
+        return sum_amicable_numbers(LIMIT)
 
     def test(self):
+        assert proper_divisors(4) == [1, 2]
         assert proper_divisors(220) == [1, 2, 4, 5, 10, 11, 20, 22, 44, 55, 110]
         assert sum_proper_divisors(220) == 284
         assert proper_divisors(284) == [1, 2, 4, 71, 142]
         assert sum_proper_divisors(284) == 220
 
+        amicable = amicable_numbers(300)
+        assert 220 in amicable
+        assert 284 in amicable
+
 
 if __name__ == '__main__':
     euler = Euler()
     euler.test()
-    euler.run()
+    print euler.run()

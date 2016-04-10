@@ -20,5 +20,6 @@ from euler18 import *
 from euler19 import *
 
 from euler20 import *
+from euler21 import *
 
 from euler67 import *

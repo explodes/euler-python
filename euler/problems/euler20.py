@@ -27,7 +27,8 @@ class Euler:
         return sum_of_factorial_digits(VALUE)
 
     def test(self):
-        assert sum_of_factorial_digits(10) == 3628800
+        assert factorial(10) == 3628800
+        assert sum_of_factorial_digits(10) == 27
 
 
 if __name__ == '__main__':

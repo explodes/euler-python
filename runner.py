@@ -33,14 +33,14 @@ def run_problems(items, number):
 
         answer = getattr(problem, 'ANSWER', 'unknown')
 
-        now = time()
-        result = problem.run()
         then = time()
+        result = problem.run()
+        now = time()
 
         equals = "[?]" if answer == "unknown" else ("[✓]" if answer == result else "[✗]")
 
         print header.ljust(50), str(problem.run()).rjust(24), equals, str(answer).ljust(24),
-        print "%.4fs" % (then - now)
+        print "%.4fs" % (now - then)
 
 
 def main(number, test):

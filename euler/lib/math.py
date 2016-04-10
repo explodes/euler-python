@@ -16,9 +16,11 @@ def divisors(n):
 
     def add(i):
         """
-        Insert i into `all_divisors` in order
+        Insert i into `all_divisors` in order without duplicates
         """
         for index in xrange(len(all_divisors)):
+            if all_divisors[index] == i:
+                return
             if all_divisors[index] > i:
                 all_divisors.insert(index, i)
                 return
@@ -26,7 +28,7 @@ def divisors(n):
 
     divisor = 2
     limit = n / 2
-    while divisor < limit:
+    while divisor <= limit:
         if n % divisor == 0:
             add(divisor)
             add(n / divisor)

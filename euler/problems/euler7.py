@@ -22,6 +22,7 @@ class Euler:
     """
     NUMBER = 7
     NAME = "10001st prime"
+    ANSWER = 104743
 
     def run(self):
         return nth_prime(LIMIT)

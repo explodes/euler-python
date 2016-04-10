@@ -45,9 +45,9 @@ class Euler:
 
     What is the value of the first triangle number to have over five hundred divisors?
     """
-
     NUMBER = 12
     NAME = "Highly divisible triangular number"
+    ANSWER = 76576500
 
     def run(self):
         return first_triangle_number_with_n_divisors(DIVISORS)

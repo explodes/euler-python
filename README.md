@@ -17,8 +17,8 @@ I strongly suggest solving the problems by yourself before looking at the code.
 Use `runner.py` to run the problems.
 
 Usage:
-`./runner.py` Run all problems
-`./runner.py -t` Run tests on all problems
-`./runner.py -n 17` Run problem 17
-`./runner.py -n 17 -t` Run tests on problem 17
-`./runner.py -h` Show usage help
+ * `./runner.py` Run all problems
+ * `./runner.py -t` Run tests on all problems
+ * `./runner.py -n 17` Run problem 17
+ * `./runner.py -n 17 -t` Run tests on problem 17
+ * `./runner.py -h` Show usage help

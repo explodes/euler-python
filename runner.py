@@ -1,4 +1,5 @@
 #!/usr/bin/env python
+# coding=utf-8
 import sys
 from time import time
 from optparse import OptionParser
@@ -18,18 +19,27 @@ def _matching_problems(items, number):
 
 
 def run_tests(items, number):
-    for klass in _matching_problems(items, number):
-        print 'test #%d: %s' % (klass.NUMBER, klass.NAME)
-        klass.test()
+    for problem in _matching_problems(items, number):
+        print 'test #%d: %s' % (problem.NUMBER, problem.NAME)
+        problem.test()
 
 
 def run_problems(items, number):
-    for klass in _matching_problems(items, number):
-        now = time()
-        header = 'Euler #%d: %s' % (klass.NUMBER, klass.NAME)
+    print "problem".ljust(50), "result".rjust(24), "   ", "answer".ljust(24), "time"
+    print "=" * (50 + 24 + 3 + 24 + 6 + 5)
 
-        print header.ljust(64), str(klass.run()).rjust(32),
+    for problem in _matching_problems(items, number):
+        header = 'Euler #%d: %s' % (problem.NUMBER, problem.NAME)
+
+        answer = getattr(problem, 'ANSWER', 'unknown')
+
+        now = time()
+        result = problem.run()
         then = time()
+
+        equals = "[?]" if answer == "unknown" else ("[✓]" if answer == result else "[✗]")
+
+        print header.ljust(50), str(problem.run()).rjust(24), equals, str(answer).ljust(24),
         print "%.4fs" % (then - now)
 
 

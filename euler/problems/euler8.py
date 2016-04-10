@@ -77,6 +77,7 @@ class Euler:
     """
     NUMBER = 8
     NAME = "Largest product in a series"
+    ANSWER = 23514624000
 
     def run(self):
         return max_product(NUM_DIGITS)

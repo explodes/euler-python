@@ -86,6 +86,7 @@ class Euler:
     """
     NUMBER = 19
     NAME = "Counting Sundays"
+    ANSWER = 171
 
     def run(self):
         return num_sundays(START_DATE[0], START_DATE[1], END_DATE[0], END_DATE[1])

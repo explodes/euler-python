@@ -29,6 +29,7 @@ class Euler:
     """
     NUMBER = 6
     NAME = "Sum square difference"
+    ANSWER = 25164150
 
     def run(self):
         return sum_squared(LIMIT) - sum_of_squares(LIMIT)

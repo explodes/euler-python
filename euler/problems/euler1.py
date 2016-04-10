@@ -15,6 +15,7 @@ class Euler:
     """
     NUMBER = 1
     NAME = "Multiples of 3 and 5"
+    ANSWER = 233168
 
     def run(self):
         return threeFives()

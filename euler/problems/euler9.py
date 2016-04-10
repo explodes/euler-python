@@ -36,6 +36,7 @@ class Euler:
     """
     NUMBER = 9
     NAME = "Special Pythagorean triplet"
+    ANSWER = 31875000
 
     def run(self):
         return product(triplet(TARGET, search_delta=TARGET))

@@ -24,6 +24,7 @@ class Euler:
     """
     NUMBER = 10
     NAME = "Summation of primes"
+    ANSWER = 142913828922
 
     def run(self):
         return sum_of_primes(LIMIT)

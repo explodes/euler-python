@@ -17,6 +17,7 @@ class Euler:
     """
     NUMBER = 3
     NAME = "Largest prime factor"
+    ANSWER = 6857
 
     def run(self):
         return max_factor(VALUE)

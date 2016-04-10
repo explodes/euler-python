@@ -26,6 +26,7 @@ class Euler:
     """
     NUMBER = 2
     NAME = "Even Fibonacci numbers"
+    ANSWER = 4613732
 
     def run(cls):
         return fibs()

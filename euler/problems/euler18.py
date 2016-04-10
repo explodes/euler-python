@@ -70,6 +70,7 @@ class Euler:
     """
     NUMBER = 18
     NAME = "Maximum path sum I"
+    ANSWER = 1074
 
     def run(self):
         tree = Tree("""

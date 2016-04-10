@@ -60,6 +60,7 @@ class Euler:
     """
     NUMBER = 14
     NAME = "Longest Collatz sequence"
+    ANSWER = 837799
 
     def run(self):
         return longest_sequence(LIMIT)

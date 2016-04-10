@@ -31,6 +31,7 @@ class Euler:
     """
     NUMBER = 4
     NAME = "Largest palindrome product"
+    ANSWER = 906609
 
     def run(self):
         return max_palindrome()

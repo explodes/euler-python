@@ -99,6 +99,7 @@ class Euler:
     """
     NUMBER = 17
     NAME = "Number letter counts"
+    ANSWER = 21124
 
     def run(self):
         return count_letters_of_range(LIMIT)

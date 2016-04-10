@@ -118,6 +118,7 @@ class Euler:
     """
     NUMBER = 13
     NAME = "Large sum"
+    ANSWER = "5537376230"
 
     def run(self):
         return digits_of_sum(DIGITS)

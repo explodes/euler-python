@@ -17,6 +17,7 @@ class Euler:
     """
     NUMBER = 16
     NAME = "Power digit sum"
+    ANSWER = 1366
 
     def run(self):
         return sum_of_exponent(EXPONENT)

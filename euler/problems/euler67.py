@@ -33,6 +33,7 @@ class Euler:
     """
     NUMBER = 67
     NAME = "Maximum path sum II"
+    ANSWER = 7273
 
     def run(self):
         return open_tree().largest_sum_in_tree()

@@ -106,6 +106,7 @@ class Euler:
     """
     NUMBER = 11
     NAME = "Largest product in a grid"
+    ANSWER = 70600674
 
     def run(self):
         return largest_product_of_series(4).product

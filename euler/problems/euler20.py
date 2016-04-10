@@ -21,6 +21,7 @@ class Euler:
     """
     NUMBER = 20
     NAME = "Factorial digit sum"
+    ANSWER = 648
 
     def run(self):
         return sum_of_factorial_digits(VALUE)

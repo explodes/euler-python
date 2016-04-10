@@ -27,6 +27,7 @@ class Euler:
     """
     NUMBER = 15
     NAME = "Lattice paths"
+    ANSWER = 137846528820
 
     def run(self):
         return num_combos(WIDTH, HEIGHT)

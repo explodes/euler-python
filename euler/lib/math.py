@@ -1,3 +1,10 @@
+#!/usr/bin/env python
+from __future__ import absolute_import
+
+import math as m
+from euler.lib.collections import insert_in_order
+
+
 def product(seq):
     """
     Multiply each item in the list and return the value
@@ -14,26 +21,12 @@ def divisors(n):
     """
     all_divisors = [1] if n == 1 else [1, n]
 
-    def add(i):
-        """
-        Insert i into `all_divisors` in order without duplicates
-        """
-        for index in xrange(len(all_divisors)):
-            if all_divisors[index] == i:
-                return
-            if all_divisors[index] > i:
-                all_divisors.insert(index, i)
-                return
-        all_divisors.append(i)
-
     divisor = 2
-    limit = n / 2
+    limit = int(m.sqrt(n))
     while divisor <= limit:
         if n % divisor == 0:
-            add(divisor)
-            add(n / divisor)
-            # optimization: search only to the highest divisor found
-            limit = n / divisor
+            insert_in_order(all_divisors, divisor)
+            insert_in_order(all_divisors, n / divisor)
         divisor += 1
     return all_divisors
 
@@ -62,3 +55,18 @@ def factorial(n):
     if n == 1:
         return 1
     return n * factorial(n - 1)
+
+
+if __name__ == '__main__':
+    from euler.lib.timing import time
+
+
+    @time
+    def timed_divisors(n):
+        return divisors(n)
+
+
+    assert timed_divisors(4) == [1, 2, 4]
+    assert timed_divisors(5) == [1, 5]
+    assert timed_divisors(220) == [1, 2, 4, 5, 10, 11, 20, 22, 44, 55, 110, 220]
+    assert timed_divisors(234262351) == [1, 67, 3496453, 234262351]

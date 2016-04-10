@@ -3,6 +3,7 @@ from __future__ import absolute_import
 
 import math as m
 from euler.lib.collections import insert_in_order
+from euler.lib.gen import lrange
 
 
 def product(seq):
@@ -20,14 +21,10 @@ def divisors(n):
     List all divisors for a given integer
     """
     all_divisors = [1] if n == 1 else [1, n]
-
-    divisor = 2
-    limit = int(m.sqrt(n))
-    while divisor <= limit:
+    for divisor in lrange(2, int(m.sqrt(n)) + 1):
         if n % divisor == 0:
             insert_in_order(all_divisors, divisor)
             insert_in_order(all_divisors, n / divisor)
-        divisor += 1
     return all_divisors
 
 
@@ -70,3 +67,4 @@ if __name__ == '__main__':
     assert timed_divisors(5) == [1, 5]
     assert timed_divisors(220) == [1, 2, 4, 5, 10, 11, 20, 22, 44, 55, 110, 220]
     assert timed_divisors(234262351) == [1, 67, 3496453, 234262351]
+    # assert timed_divisors(1326443518324400147398873) == [1, 1152846547, 1150581160845859, 1326443518324400147398873]

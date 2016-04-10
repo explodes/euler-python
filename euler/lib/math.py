@@ -20,12 +20,20 @@ def divisors(n):
     """
     List all divisors for a given integer
     """
+    # a number is always divisible by one and itself
     all_divisors = [1] if n == 1 else [1, n]
+
+    # we could skip even numbers if our input is odd
+    # but profiling has shown no performance gains event for large values of `n`
+
+    # search up to the sqrt of our value
     for divisor in lrange(2, int(m.sqrt(n)) + 1):
         if n % divisor == 0:
             insert_in_order(all_divisors, divisor, unique=False)
+            # don't add the square root twice
             if divisor * divisor != n:
                 insert_in_order(all_divisors, n / divisor, unique=False)
+
     return all_divisors
 
 

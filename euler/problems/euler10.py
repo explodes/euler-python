@@ -36,4 +36,4 @@ class Euler:
 if __name__ == '__main__':
     euler = Euler()
     euler.test()
-    euler.run()
+    print euler.run()

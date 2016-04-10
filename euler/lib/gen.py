@@ -23,6 +23,11 @@ def item_n(gen, n):
 
 
 def last_item(gen):
+    """
+    Get the last item from a generator.
+    The generator will be exhausted.
+    If the generator is infinite, this will not return.
+    """
     item = next(gen)
     try:
         while True:
@@ -33,6 +38,11 @@ def last_item(gen):
 
 
 def gen_len(gen):
+    """
+    Get the length of a generator.
+    The generator will be exhausted.
+    If the generator is infinite, this will not return.
+    """
     i = 0
     try:
         while True:
@@ -41,3 +51,20 @@ def gen_len(gen):
     except StopIteration:
         pass
     return i
+
+
+def lrange(a, b=None, step=None):
+    """
+    Use in place of xrange when the range can overflow.
+    """
+    if b is None:
+        start = 0
+        stop = a
+    else:
+        start = a
+        stop = b
+
+    i = start
+    while i < stop:
+        yield i
+        i += step

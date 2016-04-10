@@ -25,7 +25,7 @@ def run_tests(items, number):
 
 
 def run_problems(items, number):
-    print "problem".ljust(50), "result".rjust(24), "   ", "answer".ljust(24), "time"
+    print "problem".ljust(50), "result".rjust(24), "   ", "answer".ljust(24), "time".rjust(7)
     print "=" * (50 + 24 + 3 + 24 + 6 + 5)
 
     for problem in _matching_problems(items, number):
@@ -39,8 +39,7 @@ def run_problems(items, number):
 
         equals = "[?]" if answer == "unknown" else ("[✓]" if answer == result else "[✗]")
 
-        print header.ljust(50), str(problem.run()).rjust(24), equals, str(answer).ljust(24),
-        print "%.4fs" % (now - then)
+        print header.ljust(50), str(problem.run()).rjust(24), equals, str(answer).ljust(24), "%.4fs" % (now - then)
 
 
 def main(number, test):

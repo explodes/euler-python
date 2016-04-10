@@ -1,3 +1,5 @@
+#!/usr/bin/env python
+
 def first_n(gen, n):
     """
     Get the first n items from a generator
@@ -53,7 +55,7 @@ def gen_len(gen):
     return i
 
 
-def lrange(a, b=None, step=None):
+def lrange(a, b=None, step=1):
     """
     Use in place of xrange when the range can overflow.
     """
@@ -68,3 +70,9 @@ def lrange(a, b=None, step=None):
     while i < stop:
         yield i
         i += step
+
+
+if __name__ == '__main__':
+    assert list(lrange(10)) == [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+    assert list(lrange(1, 10)) == [1, 2, 3, 4, 5, 6, 7, 8, 9]
+    assert list(lrange(1, 10, 2)) == [1, 3, 5, 7, 9]

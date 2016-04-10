@@ -119,10 +119,10 @@ class Euler:
     NUMBER = 13
     NAME = "Large sum"
 
-    def test(self):
+    def run(self):
         return digits_of_sum(DIGITS)
 
-    def run(self):
+    def test(self):
         pass
 
 

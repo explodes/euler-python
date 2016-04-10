@@ -1,16 +1,9 @@
 #!/usr/bin/env python
 # coding=utf-8
-from euler.lib.math import divisors
+from euler.lib.math import proper_divisors
 from euler.problems.registry import register
 
 LIMIT = 10000
-
-
-def proper_divisors(n):
-    d = divisors(n)
-    if n in d:
-        d.remove(n)
-    return d
 
 
 def sum_proper_divisors(n):

@@ -38,6 +38,16 @@ def divisors(n):
     return all_divisors
 
 
+def proper_divisors(n):
+    """
+    A proper divisor is a number below n that divides into n evenly.
+    """
+    d = divisors(n)
+    if n in d:
+        d.remove(n)
+    return d
+
+
 def sum_of_digits(n):
     """
     Compute the sum of all digits in a number

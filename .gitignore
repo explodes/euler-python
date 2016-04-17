@@ -85,3 +85,7 @@ ENV/
 
 # Rope project settings
 .ropeproject
+
+
+# Private algorithms
+euler/internal

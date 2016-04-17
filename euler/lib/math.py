@@ -2,7 +2,7 @@
 from __future__ import absolute_import
 
 import math as m
-from euler.lib.collections import insert_in_order
+from euler.lib.seq import insert_in_order
 from euler.lib.gen import lrange
 
 

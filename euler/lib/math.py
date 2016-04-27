@@ -29,10 +29,10 @@ def divisors(n):
     # search up to the sqrt of our value
     for divisor in lrange(2, int(m.sqrt(n)) + 1):
         if n % divisor == 0:
-            insert_in_order(all_divisors, divisor, unique=False)
+            insert_in_order(all_divisors, divisor)
             # don't add the square root twice
             if divisor * divisor != n:
-                insert_in_order(all_divisors, n / divisor, unique=False)
+                insert_in_order(all_divisors, n / divisor)
 
     return all_divisors
 

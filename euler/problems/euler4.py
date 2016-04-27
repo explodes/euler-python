@@ -4,17 +4,13 @@ from euler.problems.registry import register
 
 def is_palindrome(n):
     s = str(n)
-    n = len(s) / 2
-    for i in xrange(n):
-        if not s[i] == s[-(i + 1)]:
-            return False
-    return True
+    return s == s[::-1]
 
 
 def max_palindrome():
     m = None
-    for x in xrange(100, 1000):
-        for y in xrange(100, 1000):
+    for x in xrange(100, 999 + 1):
+        for y in xrange(100, 999 + 1):
             n = x * y
             if is_palindrome(n):
                 if m is None or n > m:

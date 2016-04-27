@@ -1,8 +1,9 @@
 #!/usr/bin/env python
 
+
 def first_n(gen, n):
     """
-    Get the first n items from a generator
+    Consume and return the first n items from a generator
     """
     count = 0
     results = []
@@ -73,6 +74,10 @@ def lrange(a, b=None, step=1):
 
 
 if __name__ == '__main__':
+
+    # Tests
+
+    # lrange
     assert list(lrange(10)) == [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
     assert list(lrange(1, 10)) == [1, 2, 3, 4, 5, 6, 7, 8, 9]
     assert list(lrange(1, 10, 2)) == [1, 3, 5, 7, 9]

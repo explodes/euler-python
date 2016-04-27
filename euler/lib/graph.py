@@ -11,6 +11,10 @@ ROOT = object()
 
 
 class Graph(defaultdict):
+    """
+    Adjacency-list directed-graph implementation
+    """
+
     def __init__(self, root=NO_ROOT, default_factory=list):
         """
         Construct this graph
@@ -35,7 +39,7 @@ class Graph(defaultdict):
     def traverse(self, root=ROOT):
         """
         Simple traversal generator, yielding all nodes in this graph.
-        For trees, this will traverse breadth-first.
+        This will traverse breadth-first.
         :param root starting node, use sentinel ROOT to start with the root node
         """
         if root is ROOT:

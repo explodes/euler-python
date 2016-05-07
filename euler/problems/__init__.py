@@ -1,5 +1,5 @@
-import os
 import glob
+import os
 import re
 
 # I tried to make this as ridiculous as possible. I'm sorry but I just couldn't resist.

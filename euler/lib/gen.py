@@ -1,14 +1,25 @@
 #!/usr/bin/env python
 
 
-def first_n(gen, n):
+def first_n(gen, n, catch=False):
     """
     Consume and return the first n items from a generator
+    :param gen: generator to consume
+    :param n: number of items to consume
+    :param catch: by default, if there are not enough items, StopIteration will be raised. if True, the list will be
+                  returned instead of an error being raised
     """
     count = 0
     results = []
     while count < n:
-        results.append(next(gen))
+        try:
+            next_item = next(gen)
+        except StopIteration:
+            if not catch:
+                raise
+            else:
+                break
+        results.append(next_item)
         count += 1
     return results
 

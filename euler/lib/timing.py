@@ -1,6 +1,6 @@
 # coding=utf-8
-from time import time as t
 from functools import wraps
+from time import time as t
 
 
 def time(func):

@@ -2,8 +2,9 @@
 from __future__ import absolute_import
 
 import math as m
-from euler.lib.seq import insert_in_order
+
 from euler.lib.gen import lrange
+from euler.lib.seq import insert_in_order
 
 
 def product(seq):

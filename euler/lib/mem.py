@@ -9,6 +9,8 @@ def memoize(known=None):
     known = {} if known is None else {}
 
     def decorator(func):
+        func.__memoized = known
+
         @wraps(func)
         def wrapped(*args, **kwargs):
             if kwargs:

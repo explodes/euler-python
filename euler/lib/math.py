@@ -20,8 +20,14 @@ def divisors(n):
     """
     List all divisors for a given integer
     """
+    # base cases
+    if n == 0:
+        return []
+    if n == 1:
+        return [1]
+
     # a number is always divisible by one and itself
-    all_divisors = [1] if n == 1 else [1, n]
+    all_divisors = [1, n]
 
     # we could skip even numbers if our input is odd
     # but profiling has shown no performance gains event for large values of `n`

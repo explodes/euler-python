@@ -1,5 +1,6 @@
 #!/usr/bin/env python
 import os
+
 from euler.problems.euler18 import Tree
 from euler.problems.registry import register
 

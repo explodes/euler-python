@@ -1,6 +1,7 @@
 #!/usr/bin/env python
 # coding=utf-8
 from itertools import permutations
+
 from euler.lib.gen import item_n
 from euler.problems.registry import register
 

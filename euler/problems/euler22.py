@@ -1,6 +1,7 @@
 #!/usr/bin/env python
 # coding=utf-8
 import os
+
 from euler.problems.registry import register
 
 FILE = "p022_names.txt"

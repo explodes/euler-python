@@ -1,8 +1,7 @@
 #!/usr/bin/env python
 # coding=utf-8
-import sys
-from time import time
 from optparse import OptionParser
+from time import time
 
 parser = OptionParser()
 parser.add_option("-n", "--number", dest="number", type="int",

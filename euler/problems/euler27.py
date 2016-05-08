@@ -1,6 +1,44 @@
 #!/usr/bin/env python
 # coding=utf-8
+
+from euler.lib.prime import is_prime
 from euler.problems.registry import register
+
+BOUNDARY = 999
+
+
+def quad_formula(a, b):
+    def f(n):
+        return n * n + a * n + b
+
+    return f
+
+
+def number_of_consecutive_primes(a, b):
+    n = 0
+    while True:
+        if not is_prime(n * n + a * n + b):
+            break
+        n += 1
+    return n
+
+
+def longest_run_of_primes(a_min, a_max, b_min, b_max):
+    longest_run = None
+    longest_a, longest_b = None, None
+
+    for a in xrange(a_min, a_max + 1):
+        for b in xrange(b_min, b_max + 1):
+            run = number_of_consecutive_primes(a, b)
+            if longest_run is None or run > longest_run:
+                longest_run = run
+                longest_a, longest_b = a, b
+    return longest_a, longest_b
+
+
+def product_of_longest_run(a_min, a_max, b_min, b_max):
+    a, b = longest_run_of_primes(a_min, a_max, b_min, b_max)
+    return a * b
 
 
 @register
@@ -28,13 +66,15 @@ class Euler:
     """
     NUMBER = 27
     NAME = "Quadratic primes"
-    ANSWER = None
+    ANSWER = -59231
 
     def run(self):
-        return "NOT IMPLEMENTED"
+        return product_of_longest_run(-BOUNDARY, BOUNDARY, -BOUNDARY, BOUNDARY)
 
     def test(self):
-        pass
+        assert number_of_consecutive_primes(1, 41) == 40
+        assert number_of_consecutive_primes(-79, 1601) == 80
+        assert product_of_longest_run(-79, -79, 1601, 1601) == -126479
 
 
 if __name__ == '__main__':

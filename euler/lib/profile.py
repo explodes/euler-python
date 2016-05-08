@@ -3,6 +3,23 @@ from functools import wraps
 from time import time as t
 
 
+def log(callable, *args, **kwargs):
+    name = callable.__name__
+
+    if args and kwargs:
+        print '--> %s(%s, %s)' % (name, args, kwargs)
+    elif args:
+        print '--> %s(%s)' % (name, args)
+    elif kwargs:
+        print '--> %s(%s)' % (name, kwargs)
+    else:
+        print '--> %s()' % name
+
+    result = callable(*args, **kwargs)
+    print '<-- %s => %s' % (name, result)
+    return result
+
+
 def time(func):
     """
     Time a function.

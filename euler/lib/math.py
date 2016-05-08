@@ -71,7 +71,7 @@ def factorial(n):
 
 
 if __name__ == '__main__':
-    from euler.lib.timing import time
+    from euler.lib.profile import time
 
 
     @time

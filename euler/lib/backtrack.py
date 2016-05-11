@@ -162,9 +162,6 @@ class Permutations(Backtrack):
     def construct_candidates(self, a, k, items):
         return [c for c in items if not c in a[:k]]
 
-    def format_solution(self, a, k, context):
-        return a[:]
-
     def is_a_solution(self, a, k, items):
         return k == len(items)
 
@@ -178,6 +175,9 @@ if __name__ == "__main__":
 
 
     class PermutationsSaved(Permutations, SolutionSaverMixin):
+        def format_solution(self, a, k, context):
+            return a[:]
+
         def permutations(self, items):
             self.reset()
             self.find_permutations(items)

@@ -129,34 +129,63 @@ class SolutionSaverMixin(SolutionHandler):
         self.solutions.append(solution)
 
 
-class AllSubsets(Backtrack):
+class Subsets(Backtrack):
     """
     Find all subsets in a given list of items.
     Reports 2^n solutions
     """
 
-    def find_all_subsets(self, items):
-        N = len(items)
-        a = [None] * N
-        k = 0
-        self.backtrack(a, k, items)
+    def find_subsets(self, items):
+        a = [None] * len(items)
+        self.backtrack(a, 0, items)
 
-    def is_a_solution(self, a, k, context):
-        return k == len(context)
+    def is_a_solution(self, a, k, items):
+        return k == len(items)
 
-    def construct_candidates(self, a, k, context):
+    def construct_candidates(self, a, k, items):
         return [True, False]
 
+    def format_solution(self, a, k, items):
+        return [z[1] for z in zip(a, items) if z[0]]
+
+
+class Permutations(Backtrack):
+    """
+    Permutation Backtrack algorithm as per Skiena p235
+    """
+    SENTINEL = object()  # guaranteed unique item to which nothing else may be equal
+
+    def find_permutations(self, items):
+        a = [Permutations.SENTINEL] * len(items)
+        self.backtrack(a, 0, items)
+
+    def construct_candidates(self, a, k, items):
+        return [c for c in items if not c in a[:k]]
+
     def format_solution(self, a, k, context):
-        return [z[1] for z in zip(a, context) if z[0]]
+        return a[:]
+
+    def is_a_solution(self, a, k, items):
+        return k == len(items)
 
 
 if __name__ == "__main__":
-    class SubsetsSaved(AllSubsets, SolutionSaverMixin):
-        def all_subsets(self, items):
+    class SubsetsSaved(Subsets, SolutionSaverMixin):
+        def subsets(self, items):
             self.reset()
-            self.find_all_subsets(items)
+            self.find_subsets(items)
             return self.solutions
 
 
-    assert SubsetsSaved().all_subsets([1, 2, 3]) == [[1, 2, 3], [1, 2], [1, 3], [1], [2, 3], [2], [3], []]
+    class PermutationsSaved(Permutations, SolutionSaverMixin):
+        def permutations(self, items):
+            self.reset()
+            self.find_permutations(items)
+            return self.solutions
+
+
+    assert SubsetsSaved().subsets([1, 2, 3]) == \
+           [[1, 2, 3], [1, 2], [1, 3], [1], [2, 3], [2], [3], []]
+
+    assert PermutationsSaved().permutations([1, 2, 3]) == \
+           [[1, 2, 3], [1, 3, 2], [2, 1, 3], [2, 3, 1], [3, 1, 2], [3, 2, 1]]

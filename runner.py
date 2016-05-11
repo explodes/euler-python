@@ -1,5 +1,6 @@
 #!/usr/bin/env python
 # coding=utf-8
+import sys
 from optparse import OptionParser
 from time import time
 
@@ -35,7 +36,6 @@ def run_problems(items, number):
             answer = "unknown"
 
         print header.ljust(50), str(answer).rjust(24),
-        import sys
         sys.stdout.flush()
 
         then = time()

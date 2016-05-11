@@ -24,13 +24,19 @@ def run_tests(items, number):
 
 
 def run_problems(items, number):
-    print "problem".ljust(50), "result".rjust(24), "   ", "answer".ljust(24), "time".rjust(7)
+    print "problem".ljust(50), "answer".rjust(24), "   ", "result".ljust(24), "time".rjust(7)
     print "=" * (50 + 24 + 3 + 24 + 6 + 5)
 
     for problem in _matching_problems(items, number):
         header = 'Euler #%d: %s' % (problem.NUMBER, problem.NAME)
 
         answer = getattr(problem, 'ANSWER', 'unknown')
+        if answer in [None, "unknown"]:
+            answer = "unknown"
+
+        print header.ljust(50), str(answer).rjust(24),
+        import sys
+        sys.stdout.flush()
 
         then = time()
         result = problem.run()
@@ -38,7 +44,7 @@ def run_problems(items, number):
 
         equals = "[?]" if answer == "unknown" else ("[✓]" if answer == result else "[✗]")
 
-        print header.ljust(50), str(problem.run()).rjust(24), equals, str(answer).ljust(24), "%.4fs" % (now - then)
+        print equals, str(result).ljust(24), "%.4fs" % (now - then)
 
 
 def main(number, test):

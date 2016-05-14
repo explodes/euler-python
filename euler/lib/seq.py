@@ -4,6 +4,7 @@
 def bin_index(L, item, low=0, high=None):
     """
     Perform a binary search on ordered sequence L
+    If the item is not found, return the index in which it should be inserted
     O(lg n)
     :param L: ordered sequence to scan
     :param item: `item` to search for

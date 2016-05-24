@@ -30,7 +30,7 @@ class Euler:
     """
     NUMBER = 31
     NAME = "Coin sums"
-    ANSWER = None
+    ANSWER = 73682
 
     def run(self):
         return num_comprising_combinations(200, [1, 2, 5, 10, 20, 50, 100, 200])

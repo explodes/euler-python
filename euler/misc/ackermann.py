@@ -1,4 +1,3 @@
-from collections import deque
 from euler.lib.mem import memoize
 
 

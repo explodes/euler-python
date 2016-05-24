@@ -18,7 +18,7 @@ def digits_of(n):
     """
     Generate each digit of a number, starting with the lowest digit
     """
-    while n > 10:
+    while n >= 10:
         d = n % 10
         yield d
         n = (n - d) / 10
@@ -35,3 +35,8 @@ if __name__ == '__main__':
     assert num_digits(99) == 2
     assert num_digits(100) == 3
     assert num_digits(101) == 3
+
+    assert list(digits_of(10203)) == [3, 0, 2, 0, 1]
+    assert list(digits_of(1023)) == [3, 2, 0, 1]
+    assert list(digits_of(123)) == [3, 2, 1]
+    assert list(digits_of(321)) == [1, 2, 3]

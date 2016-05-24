@@ -1,6 +1,43 @@
 #!/usr/bin/env python
 # coding=utf-8
+import math as m
+
+from euler.lib.prime import is_prime
 from euler.problems.registry import register
+
+LIMIT = 1000000
+
+
+def n_digits(n):
+    if n == 0:
+        return 1
+    return int(m.floor(m.log10(n))) + 1
+
+
+def rotations_gen(n):
+    digits = n_digits(n)
+    pow_10 = 10 ** (digits - 1)
+    for digit in xrange(digits):
+        yield n
+        d = n % 10
+        n -= d
+        n /= 10
+        n += d * pow_10
+
+
+def is_circular_prime(n):
+    for rotation in rotations_gen(n):
+        if not is_prime(rotation):
+            return False
+    return True
+
+
+def circular_prime_count(limit):
+    count = 0
+    for n in xrange(2, limit + 1):
+        if is_circular_prime(n):
+            count += 1
+    return count
 
 
 @register
@@ -15,13 +52,24 @@ class Euler:
     """
     NUMBER = 35
     NAME = "Circular primes"
-    ANSWER = None
+    ANSWER = 55
 
     def run(self):
-        return "NOT IMPLEMENTED"
+        return circular_prime_count(LIMIT)
 
     def test(self):
-        pass
+        assert n_digits(0) == 1
+        assert n_digits(1) == 1
+        assert n_digits(10) == 2
+        assert n_digits(11) == 2
+        assert n_digits(19) == 2
+        assert n_digits(99) == 2
+        assert n_digits(100) == 3
+
+        assert list(rotations_gen(197)) == [197, 719, 971]
+        assert list(rotations_gen(1978)) == [1978, 8197, 7819, 9781]
+
+        assert is_circular_prime(197)
 
 
 if __name__ == '__main__':

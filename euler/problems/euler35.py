@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # coding=utf-8
 
-from euler.lib.num import n_digits
+from euler.lib.num import num_digits
 from euler.lib.prime import is_prime
 from euler.problems.registry import register
 
@@ -9,7 +9,7 @@ LIMIT = 1000000
 
 
 def rotations_gen(n):
-    digits = n_digits(n)
+    digits = num_digits(n)
     pow_10 = 10 ** (digits - 1)
     for digit in xrange(digits):
         yield n
@@ -57,13 +57,13 @@ class Euler:
         return circular_prime_count(LIMIT)
 
     def test(self):
-        assert n_digits(0) == 1
-        assert n_digits(1) == 1
-        assert n_digits(10) == 2
-        assert n_digits(11) == 2
-        assert n_digits(19) == 2
-        assert n_digits(99) == 2
-        assert n_digits(100) == 3
+        assert num_digits(0) == 1
+        assert num_digits(1) == 1
+        assert num_digits(10) == 2
+        assert num_digits(11) == 2
+        assert num_digits(19) == 2
+        assert num_digits(99) == 2
+        assert num_digits(100) == 3
 
         assert list(rotations_gen(197)) == [197, 719, 971]
         assert list(rotations_gen(1978)) == [1978, 8197, 7819, 9781]

@@ -3,7 +3,7 @@ from __future__ import absolute_import
 import math as m
 
 
-def n_digits(n):
+def num_digits(n):
     """
     Count the number of digits in a number
     """

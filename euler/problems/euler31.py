@@ -1,11 +1,15 @@
 #!/usr/bin/env python
 # coding=utf-8
-from euler.lib.mem import memoize
 from euler.problems.registry import register
 
 
-@memoize(memoize_on=lambda value, options, start=0: (value, start))
-def num_comprising_combinations(value, options, start=0):
+def num_comprising_combinations(value, options, start=0, mem=None):
+    key = (value, start)
+    if mem is None:
+        mem = {}
+    elif key in mem:
+        return mem[key]
+
     num_variations = 0
     for index in xrange(start, len(options)):
         option = options[index]
@@ -13,6 +17,8 @@ def num_comprising_combinations(value, options, start=0):
             num_variations += 1
         elif value > option:
             num_variations += num_comprising_combinations(value - option, options, index)
+
+    mem[key] = num_variations
 
     return num_variations
 
@@ -50,5 +56,5 @@ class Euler:
 
 if __name__ == '__main__':
     euler = Euler()
-    # euler.test()
+    euler.test()
     print euler.run()

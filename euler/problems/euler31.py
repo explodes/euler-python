@@ -1,27 +1,18 @@
 #!/usr/bin/env python
 # coding=utf-8
-
+from euler.lib.mem import memoize
 from euler.problems.registry import register
 
 
-def num_comprising_combinations(value, options, mem=None):
-    if mem is None:
-        mem = {}
-    elif value in mem:
-        return mem[value]
-
+@memoize(memoize_on=lambda value, options, start=0: (value, start))
+def num_comprising_combinations(value, options, start=0):
     num_variations = 0
-    for index, option in enumerate(options):
+    for index in xrange(start, len(options)):
+        option = options[index]
         if value == option:
             num_variations += 1
-            print "fullfilled", num_variations
         elif value > option:
-            num_variations += num_comprising_combinations(value - option, options, mem)
-            print "exploded", num_variations
-
-    mem[value] = num_variations
-
-    print value, num_variations
+            num_variations += num_comprising_combinations(value - option, options, index)
 
     return num_variations
 

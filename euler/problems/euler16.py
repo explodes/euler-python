@@ -1,5 +1,5 @@
 #!/usr/bin/env python
-from euler.lib.math import sum_of_digits
+from euler.lib.maths import sum_of_digits
 from euler.problems.registry import register
 
 EXPONENT = 1000

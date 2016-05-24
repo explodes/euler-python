@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # coding=utf-8
-from euler.lib.math import factorial
+from euler.lib.maths import factorial
 from euler.lib.mem import memoize
 from euler.lib.num import digits_of
 from euler.problems.registry import register

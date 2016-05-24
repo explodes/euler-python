@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 from euler.lib.gen import last_item
-from euler.lib.math import product
+from euler.lib.maths import product
 from euler.problems.registry import register
 
 NUM_DIGITS = 13

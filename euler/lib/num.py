@@ -1,3 +1,4 @@
+#!/usr/bin/env python
 from __future__ import absolute_import
 
 import math as m
@@ -21,3 +22,15 @@ def digits_of(n):
         yield d
         n = (n - d) / 10
     yield n
+
+
+if __name__ == '__main__':
+
+    assert num_digits(0) == 1
+    assert num_digits(1) == 1
+    assert num_digits(9) == 1
+    assert num_digits(10) == 2
+    assert num_digits(11) == 2
+    assert num_digits(99) == 2
+    assert num_digits(100) == 3
+    assert num_digits(101) == 3

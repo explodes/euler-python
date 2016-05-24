@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # coding=utf-8
-from euler.lib.math import proper_divisors
+from euler.lib.maths import proper_divisors
 from euler.lib.mem import memoize
 from euler.problems.registry import register
 

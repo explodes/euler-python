@@ -1,5 +1,5 @@
 #!/usr/bin/env python
-from euler.lib.math import product
+from euler.lib.maths import product
 from euler.lib.prime import factors
 from euler.problems.registry import register
 

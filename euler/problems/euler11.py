@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 from collections import namedtuple
 
-from euler.lib.math import product
+from euler.lib.maths import product
 from euler.problems.registry import register
 
 LIMIT = 4

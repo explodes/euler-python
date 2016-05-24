@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 from euler.lib.gen import item_n, first_n
-from euler.lib.math import divisors
+from euler.lib.maths import divisors
 from euler.problems.registry import register
 
 DIVISORS = 500

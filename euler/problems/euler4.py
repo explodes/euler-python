@@ -1,10 +1,10 @@
 #!/usr/bin/env python
+from euler.lib.strings import is_palindrome
 from euler.problems.registry import register
 
 
-def is_palindrome(n):
-    s = str(n)
-    return s == s[::-1]
+def num_is_palindrome(n):
+    return is_palindrome(str(n))
 
 
 def max_palindrome():
@@ -12,7 +12,7 @@ def max_palindrome():
     for x in xrange(100, 999 + 1):
         for y in xrange(100, 999 + 1):
             n = x * y
-            if is_palindrome(n):
+            if num_is_palindrome(n):
                 if m is None or n > m:
                     m = n
     return m
@@ -33,11 +33,11 @@ class Euler:
         return max_palindrome()
 
     def test(self):
-        assert is_palindrome(101)
-        assert is_palindrome(123321)
-        assert is_palindrome(1234321)
-        assert not is_palindrome(1010)
-        assert not is_palindrome(10110)
+        assert num_is_palindrome(101)
+        assert num_is_palindrome(123321)
+        assert num_is_palindrome(1234321)
+        assert not num_is_palindrome(1010)
+        assert not num_is_palindrome(10110)
 
 
 if __name__ == '__main__':

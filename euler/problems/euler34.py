@@ -2,6 +2,7 @@
 # coding=utf-8
 from euler.lib.math import factorial
 from euler.lib.mem import memoize
+from euler.lib.num import digits_of
 from euler.problems.registry import register
 
 LIMIT = 100000
@@ -10,14 +11,6 @@ LIMIT = 100000
 @memoize()
 def factorial_mem(n):
     return factorial(n)
-
-
-def digits_of(n):
-    while n > 10:
-        d = n % 10
-        yield d
-        n = (n - d) / 10
-    yield n
 
 
 def is_curious(n):

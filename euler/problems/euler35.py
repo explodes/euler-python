@@ -1,17 +1,11 @@
 #!/usr/bin/env python
 # coding=utf-8
-import math as m
 
+from euler.lib.num import n_digits
 from euler.lib.prime import is_prime
 from euler.problems.registry import register
 
 LIMIT = 1000000
-
-
-def n_digits(n):
-    if n == 0:
-        return 1
-    return int(m.floor(m.log10(n))) + 1
 
 
 def rotations_gen(n):

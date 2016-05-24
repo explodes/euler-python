@@ -10,25 +10,32 @@ parser.add_option("-n", "--number", dest="number", type="int",
 parser.add_option("-t", "--test",
                   action="store_true", dest="test", default=False,
                   help="run tests")
+parser.add_option("-u", "--unsolved",
+                  action="store_true", dest="unsolved", default=False,
+                  help="only show unsolved problems")
 
 
-def _matching_problems(items, number):
-    for klass in items:
-        if number is None or klass.NUMBER == number:
+def _matching_problems(number, unsolved):
+    from euler.problems import registry
+    for klass in registry.REGISTRY:
+        if unsolved:
+            if klass.ANSWER is None:
+                yield klass()
+        elif number is None or klass.NUMBER == number:
             yield klass()
 
 
-def run_tests(items, number):
-    for problem in _matching_problems(items, number):
+def run_tests(problems):
+    for problem in problems:
         print 'test #%d: %s' % (problem.NUMBER, problem.NAME)
         problem.test()
 
 
-def run_problems(items, number):
+def run_problems(problems):
     print "problem".ljust(50), "answer".rjust(24), "   ", "result".ljust(24), "time".rjust(7)
     print "=" * (50 + 24 + 3 + 24 + 6 + 5)
 
-    for problem in _matching_problems(items, number):
+    for problem in problems:
         header = 'Euler #%d: %s' % (problem.NUMBER, problem.NAME)
 
         answer = getattr(problem, 'ANSWER', 'unknown')
@@ -47,14 +54,15 @@ def run_problems(items, number):
         print equals, str(result).ljust(24), "%.4fs" % (now - then)
 
 
-def main(number, test):
-    from euler.problems import registry
+def main(number, test, unsolved):
     if test:
-        run_tests(registry.REGISTRY, number)
+        problems = _matching_problems(number, unsolved)
+        run_tests(problems)
     else:
-        run_problems(registry.REGISTRY, number)
+        problems = _matching_problems(number, unsolved)
+        run_problems(problems)
 
 
 if __name__ == '__main__':
     (options, args) = parser.parse_args()
-    main(options.number, options.test)
+    main(options.number, options.test, options.unsolved)

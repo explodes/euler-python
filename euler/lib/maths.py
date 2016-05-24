@@ -1,7 +1,5 @@
 #!/usr/bin/env python
-from __future__ import absolute_import
-
-import math as m
+import math
 
 from euler.lib.gen import lrange
 from euler.lib.seq import insert_in_order
@@ -34,7 +32,7 @@ def divisors(n):
     # but profiling has shown no performance gains event for large values of `n`
 
     # search up to the sqrt of our value
-    for divisor in lrange(2, int(m.sqrt(n)) + 1):
+    for divisor in lrange(2, int(math.sqrt(n)) + 1):
         if n % divisor == 0:
             insert_in_order(all_divisors, divisor)
             # don't add the square root twice

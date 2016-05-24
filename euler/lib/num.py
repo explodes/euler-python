@@ -1,7 +1,5 @@
 #!/usr/bin/env python
-from __future__ import absolute_import
-
-import math as m
+import math
 
 
 def num_digits(n):
@@ -10,7 +8,10 @@ def num_digits(n):
     """
     if n == 0:
         return 1
-    return int(m.floor(m.log10(n))) + 1
+    digits = math.log10(n)
+    digits = math.floor(digits)
+    digits = int(digits) + 1  # convert to int
+    return digits
 
 
 def digits_of(n):

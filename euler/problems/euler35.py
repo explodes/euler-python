@@ -19,9 +19,14 @@ def rotations_gen(n):
     pow_10 = 10 ** (digits - 1)
     for digit in xrange(digits):
         yield n
+        # take the lowest digit
         d = n % 10
+
+        # remove it
         n -= d
         n /= 10
+
+        # add it to the beginning
         n += d * pow_10
 
 

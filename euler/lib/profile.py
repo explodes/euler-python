@@ -33,7 +33,7 @@ def time(func):
         then = current_time()
         result = func(*args, **kwargs)
         now = current_time()
-        print "← %s :: %0.6fs ⇒ %s" % (sig, (now - then), result)
+        print "← %0.6fs :: %s ⇒ %s" % ((now - then), sig, result)
         return result
 
     return wrapper
